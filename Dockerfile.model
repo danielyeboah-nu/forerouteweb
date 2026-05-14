@@ -1,0 +1,23 @@
+FROM python:3.12-slim AS model
+
+WORKDIR /app/ml
+
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+ENV MLFLOW_TRACKING_URI=sqlite:////app/ml/mlflow.db
+ENV PORT=8080
+
+COPY ml/requirements-serving.txt ./requirements-serving.txt
+RUN pip install --no-cache-dir -r requirements-serving.txt
+
+COPY ml/ ./
+
+RUN python train.py \
+  --data data/boston_crash_dataset_with_aadt.csv \
+  --label-col label \
+  --registry-name ForeRoute-BostonRisk \
+  --experiment foreroute-boston-risk
+
+EXPOSE 8080
+
+CMD ["sh", "-c", "mlflow models serve -m 'models:/ForeRoute-BostonRisk@production' --env-manager local --host 0.0.0.0 --port ${PORT}"]
