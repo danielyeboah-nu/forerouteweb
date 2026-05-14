@@ -1,0 +1,23 @@
+{
+  "source": "Synthetic Boston bbox samples with typical conditions (n=500)",
+  "model_alias": "models:/ForeRoute-BostonRisk@production",
+  "quantiles": {
+    "q10": 0.17119456213304457,
+    "q25": 0.22802423903667807,
+    "q50": 0.3216031499176057,
+    "q75": 0.45271216383404805,
+    "q90": 0.5314703900051758
+  },
+  "thresholds": {
+    "lower_max": 0.22802423903667807,
+    "typical_max": 0.45271216383404805,
+    "above_max": 0.5314703900051758,
+    "median": 0.3216031499176057
+  },
+  "interpretation": {
+    "lower": "probability < 0.228",
+    "typical": "0.228 \u2264 probability < 0.453",
+    "above": "0.453 \u2264 probability < 0.531",
+    "muchHigher": "probability \u2265 0.531"
+  }
+}

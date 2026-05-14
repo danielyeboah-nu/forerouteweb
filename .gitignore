@@ -1,0 +1,23 @@
+# Node / Next.js
+web/node_modules/
+web/.next/
+web/out/
+web/.env.local
+web/.env*.local
+web/next-env.d.ts
+
+# Python / MLflow
+ml/__pycache__/
+ml/.venv/
+ml/mlruns/
+ml/mlartifacts/
+ml/mlflow.db
+ml/.cache/
+ml/*.egg-info/
+**/*.pyc
+
+# TypeScript
+web/tsconfig.tsbuildinfo
+
+# OS
+.DS_Store
